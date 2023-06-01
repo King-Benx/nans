@@ -15,7 +15,27 @@ const Product = ({
 }) => {
   const [state, setState] = useState({
     rating: rating,
+    count: 0,
   });
+
+  const handleItemDecrease = () => {
+    setState((prev) => {
+      return {
+        ...prev,
+        count: prev.count <= 0 ? 0 : (prev.count -= 1),
+      };
+    });
+  };
+
+  const handleItemIncrease = () => {
+    setState((prev) => {
+      return {
+        ...prev,
+        count: (prev.count += 1),
+      };
+    });
+  };
+
   return (
     <Row className="product">
       <Col className="product-image" xs={12} sm={6}>
@@ -40,24 +60,44 @@ const Product = ({
             </Col>
             <Col>{reviews.length} Reviews</Col>
           </Row>
-          <p className="money">UGX {price.toLocaleString()}</p>
+          <p className="money">
+            <span>UGX</span> {price.toLocaleString()}
+          </p>
           {quantity > 0 ? (
             <small>{quantity} available</small>
           ) : (
             <small>Out of stock, restock in less than 3 days</small>
           )}
-          <p>{description}</p>
+          <p className="description">{description}</p>
           <Row>
             <Col xxs={12} xs={6}>
-              <ButtonGroup  
-               className="product-counter"       
-              >
-                <Button className="counter-button-left">-</Button>
-                <Button className="counter-value" disabled>0</Button>
-                <Button className="counter-button-right">+</Button>
+              <ButtonGroup className="product-counter">
+                <Button
+                  className="counter-button-left"
+                  onClick={handleItemDecrease}
+                >
+                  -
+                </Button>
+                <Button className="counter-value" disabled>
+                  {state.count}
+                </Button>
+                <Button
+                  className="counter-button-right"
+                  onClick={handleItemIncrease}
+                >
+                  +
+                </Button>
               </ButtonGroup>
             </Col>
-            <Col xs={6} xxs={12}><Button variant="contained" className="add-to-cart">Add to Cart</Button></Col>
+            <Col xs={6} xxs={12}>
+              <Button
+                disabled={state.count > 0 ? false : true}
+                variant="contained"
+                className="add-to-cart"
+              >
+                {quantity > 0 ? "Add to Cart" : "Pre-order"}
+              </Button>
+            </Col>
           </Row>
         </div>
       </Col>
