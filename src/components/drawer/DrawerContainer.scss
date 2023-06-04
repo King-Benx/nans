@@ -1,0 +1,44 @@
+.drawer-container {
+  h4 {
+    text-align: center;
+    margin-block-start: 1rem;
+    color: gray;
+  }
+  @media (width < 470px) {
+    width: 80vw;
+    min-width: 80vw;
+    max-width: 80vw;
+  }
+  @media ((width > 470px ) and (width < 768px)) {
+    min-width: 50vw;
+    max-width: 50vw;
+  }
+  @media ((width > 768px) and (width < 1164px)) {
+    max-width: 40vw;
+    min-width: 40vw;
+  }
+  @media (width > 1164px) {
+    max-width: 25vw;
+    min-width: 25vw;
+  }
+
+  .costing-container {
+    margin-block: 1rem;
+    background-color: #f6ffde;
+  }
+  .gray-text {
+    color: #979da6;
+  }
+  .total {
+    text-align: right;
+  }
+  .checkout {
+    width: 100%;
+    border-radius:20px;
+    background: #b1ba90;
+    color: #fff;
+    &:hover {
+      background: #8c9371;
+    }
+  }
+}

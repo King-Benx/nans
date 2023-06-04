@@ -7,8 +7,9 @@ import "./NavBar.scss";
 import { Link } from "react-router-dom";
 import Badge from "@mui/material/Badge";
 import { ShoppingCart } from "@mui/icons-material";
+import DrawerContainer from "../drawer/DrawerContainer";
 
-import Drawer from "@mui/material/Drawer";
+
 
 const NavBar = () => {
   const [state, setState] = useState({
@@ -61,14 +62,7 @@ const NavBar = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Drawer
-        anchor="right"
-        open={state.showDrawer}
-        onClose={(e) => toggleDrawer(e)}
-      >
-       <Container className="drawer-container">
-       </Container>
-      </Drawer>
+      <DrawerContainer isOpen={state.showDrawer} onToggle={toggleDrawer} />
     </>
   );
 };

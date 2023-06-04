@@ -1,10 +1,11 @@
 import { useRef } from "react";
 import { Row, Container } from "react-bootstrap";
 import "./Home.scss";
-import ProductList from "../components/products/ProductList";
+import ProductList from "../components/hocs/ProductList";
 import background from "../assets/background.jpg";
 import Fab from "@mui/material/Fab";
 import { KeyboardArrowUp } from "@mui/icons-material";
+import Product from "../components/products/Product";
 
 const data = [
   {
@@ -58,7 +59,7 @@ const Home = () => {
         </Row>
       </Container>
       <Container fluid>
-        <ProductList data={data} />
+        <ProductList data={data} Template={Product} />
       </Container>
       <div className="floatActionButton">
         <Fab onClick={scrollToTop}>
