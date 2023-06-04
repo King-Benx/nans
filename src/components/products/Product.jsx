@@ -1,10 +1,13 @@
 import { ButtonGroup, Rating, Button } from "@mui/material";
 import { Row, Col, Image } from "react-bootstrap";
 import { useState } from "react";
+import { addItemToCart } from "../../redux/reducers/cartReducer";
+import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import "./Product.scss";
 
 const Product = ({
+  id,
   imageSource,
   title,
   rating,
@@ -13,13 +16,14 @@ const Product = ({
   quantity,
   description,
 }) => {
+  const dispatch = useDispatch();
   const [state, setState] = useState({
     rating: rating,
     count: 0,
   });
 
   const handleItemDecrease = () => {
-    setState((prev) => {
+    setState(prev => {
       return {
         ...prev,
         count: prev.count <= 0 ? 0 : (prev.count -= 1),
@@ -28,13 +32,24 @@ const Product = ({
   };
 
   const handleItemIncrease = () => {
-    setState((prev) => {
+    setState(prev => {
       return {
         ...prev,
         count: (prev.count += 1),
       };
     });
   };
+
+  const handleAddToCart = () =>
+    dispatch(
+      addItemToCart({
+        id,
+        imageSource,
+        title,
+        price,
+        quantity: state.count,
+      })
+    );
 
   return (
     <Row className="product">
@@ -49,7 +64,7 @@ const Product = ({
               <Rating
                 value={state.rating}
                 onChange={(e, value) =>
-                  setState((prev) => {
+                  setState(prev => {
                     return {
                       ...prev,
                       rating: value,
@@ -94,6 +109,7 @@ const Product = ({
                 disabled={state.count > 0 ? false : true}
                 variant="contained"
                 className="add-to-cart"
+                onClick={handleAddToCart}
               >
                 {quantity > 0 ? "Add to Cart" : "Pre-order"}
               </Button>
@@ -106,6 +122,7 @@ const Product = ({
 };
 
 Product.propTypes = {
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   imageSource: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,

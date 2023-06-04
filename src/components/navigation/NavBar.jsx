@@ -8,22 +8,23 @@ import { Link } from "react-router-dom";
 import Badge from "@mui/material/Badge";
 import { ShoppingCart } from "@mui/icons-material";
 import DrawerContainer from "../drawer/DrawerContainer";
-
-
+import { useSelector } from "react-redux";
 
 const NavBar = () => {
   const [state, setState] = useState({
     showDrawer: false,
   });
-  const toggleDrawer = (e) => {
+  const toggleDrawer = e => {
     e.preventDefault();
-    setState((prev) => {
+    setState(prev => {
       return {
         ...prev,
         showDrawer: !prev.showDrawer,
       };
     });
   };
+
+  const data = useSelector(state => state.cart);
 
   return (
     <>
@@ -51,11 +52,13 @@ const NavBar = () => {
               <Link className="nav-link">
                 <Nav.Item>Login</Nav.Item>
               </Link>
-              <Link className="nav-link" onClick={(e) => toggleDrawer(e)}>
+              <Link className="nav-link" onClick={e => toggleDrawer(e)}>
                 <Nav.Item>
-                  <Badge badgeContent={4} color="success">
-                    <ShoppingCart color="light" />
-                  </Badge>
+                  {data.length > 0 && (
+                    <Badge badgeContent={data.length} color="success">
+                      <ShoppingCart color="light" />
+                    </Badge>
+                  )}
                 </Nav.Item>
               </Link>
             </Nav>

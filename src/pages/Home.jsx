@@ -11,21 +11,21 @@ const data = [
   {
     id: 1,
     imageSource: background,
-    title: "Product 1",
-    rating: 5,
-    reviews: ["review 1", "review 2"],
-    price: 13000,
-    quantity: 20,
+    title: "Nilotica Shea butter 250ml",
+    rating: 0,
+    reviews: [],
+    price: 132000,
+    quantity: 10,
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie ornare elit, in facilisis odio suscipit ut. Integer mollis quam id placerat auctor. Nulla facilisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Praesent vitae rhoncus sem, vel lobortis ipsum. In hac habitasse platea dictumst. Nulla porta volutpat nulla a vestibulum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
   },
   {
     id: 2,
     imageSource: background,
-    title: "Product 2",
-    rating: 5,
-    reviews: ["review 1", "review 2"],
-    price: 14000,
+    title: "Nilotica Shea butter 500ml",
+    rating: 0,
+    reviews: [],
+    price: 201000,
     quantity: 0,
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie ornare elit, in facilisis odio suscipit ut. Integer mollis quam id placerat auctor. Nulla facilisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Praesent vitae rhoncus sem, vel lobortis ipsum. In hac habitasse platea dictumst. Nulla porta volutpat nulla a vestibulum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
@@ -33,9 +33,9 @@ const data = [
   {
     id: 3,
     imageSource: background,
-    title: "Product 3",
-    rating: 5,
-    reviews: ["review 1", "review 2"],
+    title: "Nilotica Shea butter 250ml",
+    rating: 0,
+    reviews: [],
     price: 13000,
     quantity: 10,
     description:
@@ -45,7 +45,7 @@ const data = [
 
 const Home = () => {
   const ref = useRef(null);
-  const scrollToTop = () => ref.current?.scrollIntoView({behavior:'smooth'});
+  const scrollToTop = () => ref.current?.scrollIntoView({ behavior: "smooth" });
   return (
     <>
       <Container ref={ref} fluid className="landingImage">
