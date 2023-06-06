@@ -85,7 +85,7 @@ const Product = ({
           )}
           <p className="description">{description}</p>
           <Row>
-            <Col xxs={12} xs={6}>
+            <Col>
               <ButtonGroup className="product-counter">
                 <Button
                   className="counter-button-left"
@@ -103,8 +103,6 @@ const Product = ({
                   +
                 </Button>
               </ButtonGroup>
-            </Col>
-            <Col xs={6} xxs={12}>
               <Button
                 disabled={state.count > 0 ? false : true}
                 variant="contained"

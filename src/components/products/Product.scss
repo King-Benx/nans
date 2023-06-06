@@ -15,7 +15,7 @@
     .product-text {
       width: 80%;
       h4 {
-        font-size: 3rem;
+        font-size: 2.5rem;
       }
       small {
         color: #a9af55;
@@ -57,6 +57,7 @@
     .add-to-cart {
       background-color: #cbd185;
       border-radius: 46px;
+      margin-inline: 12px;
     }
 
     @media (width < 768px) {
@@ -72,6 +73,22 @@
             font-size: 1rem;
           }
         }
+      }
+      .add-to-cart {
+        width: 100%;
+        margin: 2rem 0px;
+      }
+    }
+  }
+
+  @media (width > 968px) {
+    .product-image {
+      padding-inline: 10%;
+    }
+    .product-details {
+      padding-inline: 10%;
+      .product-text {
+        width: 100%;
       }
     }
   }
